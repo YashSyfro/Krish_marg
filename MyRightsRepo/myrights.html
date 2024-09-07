@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Rights</title>
+    <link rel="stylesheet" href="myrights.css">
+</head>
+<body>
+    <div id="heading">My Rights</div>
+    <div class="container" id="main-menu">
+        <div id="downx">Know your schemes</div>
+        <button class="full-page-btn" id="state-btn">State Government</button>
+        <button class="full-page-btn" id="central-btn">Central Government</button>
+        <button class="full-page-btn" id="private-bank-btn">Banks (Private)</button>
+        <button class="full-page-btn" id="public-bank-btn">Banks (Public)</button>
+    </div>
+
+    <div class="content-container" id="content" style="display:none;">
+        <div id="nav">
+            <button class="back-btn" id="back-btn">←</button>
+            <div id="head">
+                <div id="schemes">State Government Schemes,</div>
+                <div id="nameState">Rajasthan</div>
+            </div>
+        </div>
+        <div id="details"></div>
+    </div>
+
+    <script>
+        // Function to handle showing details and hiding main menu
+        function showDetails(contentHTML, scheme) {
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('details').innerHTML = contentHTML;
+            document.getElementById('heading').style.display = 'none';
+            document.getElementById('schemes').innerHTML = scheme;
+        }
+
+        // Function to handle going back to main menu
+        function goBack() {
+            document.getElementById('content').style.display = 'none';
+            document.getElementById('main-menu').style.display = 'flex';
+            document.getElementById('heading').style.display = 'flex';
+        }
+
+        // Event listeners for the buttons
+        document.getElementById('state-btn').addEventListener('click', function() {
+            showDetails(`
+                <table>
+                    <tr>
+                        <th>Scheme</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td>Kantedar Tarbandi Yojana</td>
+                        <td>Small and marginal farmers receive 60% of the total cost, capped at ₹48,000, while other farmers receive 50% of the total cost, capped at ₹40,000. Community applications from groups of 10 or more farmers with a minimum of 5 hectares collectively receive 70% of the total cost, capped at ₹56,000 per farmer.
+                            <a href = "https://sso.rajasthan.gov.in/signin"> https://sso.rajasthan.gov.in/signin </a></td>
+                    </tr>
+                    <tr>
+                        <td>Green House</td>
+                        <td>General-category farmers receive a 50% grant, while small, marginal, scheduled caste, and scheduled tribe farmers receive a 70% grant. Farmers in Scheduled Tribe areas and small and marginal category farmers receive an additional 25% grant. <a href = "https://sso.rajasthan.gov.in/signin"> https://sso.rajasthan.gov.in/signin </a></td>
+                    </tr>
+                    <tr>
+                        <td>Krishi Yantra</td>
+                        <td>Farmers receive a subsidy of 40% of the total price of farming equipment purchased from an authorized dealer. Government farmers receive up to a 50% subsidy. <a href = "https://sso.rajasthan.gov.in/signin"> https://sso.rajasthan.gov.in/signin </a></td>
+                    </tr>
+                    <tr>
+                        <td>Diggy</td>
+                        <td>The state government provides a 75% to 85% subsidy to farmers who purchase a permanent container with a minimum filling capacity of 4 lakh liters or more. The government also provides a grant of up to ₹3,00,000 to ₹3,40,000 for making a dig in fields. <a href = "https://sso.rajasthan.gov.in/signin"> https://sso.rajasthan.gov.in/signin </a></td>
+                    </tr>
+                </table>
+            `, "State Government Schemes");
+            document.getElementById('nameState').style.display = 'block';
+        });
+
+        document.getElementById('central-btn').addEventListener('click', function() {
+            showDetails('<p>XYZ - Central Government Schemes</p>', "Central Government Schemes");
+            document.getElementById('nameState').style.display = 'none';
+        });
+
+        document.getElementById('private-bank-btn').addEventListener('click', function() {
+            showDetails('<p>XYZ - Private Bank Schemes</p>', "Bank (private) Schemes");
+            document.getElementById('nameState').style.display = 'none';
+        });
+
+        document.getElementById('public-bank-btn').addEventListener('click', function() {
+            showDetails('<p>XYZ - Public Bank Schemes</p>', "Bank (public) Schemes");
+            document.getElementById('nameState').style.display = 'none';
+        });
+
+        document.getElementById('back-btn').addEventListener('click', goBack);
+    </script>
+</body>
+</html>
